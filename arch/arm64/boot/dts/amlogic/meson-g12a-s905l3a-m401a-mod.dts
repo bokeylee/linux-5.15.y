@@ -2,6 +2,7 @@
 /*
  * Copyright (c) 2018 Amlogic, Inc. All rights reserved.
  * Create by janko888 2022/11/27
+ * Modify by Bokeylee 2022/11/29
  */
  
 /dts-v1/;
@@ -63,6 +64,13 @@
 	pinctrl-0 = <&uart_a_pins>, <&uart_a_cts_rts_pins>;
 	uart-has-rtscts;
 	pinctrl-names = "default";
+	
+        bluetooth {
+                compatible = "realtek,rtl8723bs-bt";
+                max-speed = <2000000>;
+                clocks = <&wifi32k>;
+                clock-names = "lpo";
+        };
 };
 
 &mali {
@@ -91,24 +99,51 @@
 /* CPU Overclock */
 &cpu_opp_table {
 	opp-100000000 {
+		opp-hz = <0x00 0x5f5e100>;
+		opp-microvolt = <0xb2778>;
 		status = "disabled";
 	};
-
 	opp-250000000 {
+		opp-hz = <0x00 0xee6b280>;
+		opp-microvolt = <0xb2778>;
 		status = "disabled";
 	};
-	
 	opp-500000000 {
+		opp-hz = <0x00 0x1dcd6500>;
+		opp-microvolt = <0xb2778>;
 		status = "disabled";
 	};
-
 	opp-667000000 {
+		opp-hz = <0x00 0x27bc86aa>;
+		opp-microvolt = <0xb2778>;
 		status = "disabled";
 	};
-	/* Lock 1800mhz */
+	opp-1000000000 {
+		opp-hz = <0x00 0x3b9aca00>;
+		opp-microvolt = <0xb2778>;
+	};
+	opp-1200000000 {
+		opp-hz = <0x00 0x47868c00>;
+		opp-microvolt = <0xb9ca8>;
+	};
+	opp-1398000000 {
+		opp-hz = <0x00 0x5353c980>;
+		opp-microvolt = <0xc11d8>;
+	};
+	opp-1512000000 {
+		opp-hz = <0x00 0x5a1f4a00>;
+		opp-microvolt = <0xcae18>;
+	};
+	opp-1608000000 {
+		opp-hz = <0x00 0x5fd82200>;
+		opp-microvolt = <0xd4a58>;
+	};
 	opp-1704000000 {
-		opp-hz = /bits/ 64 <1704000000>;
-		opp-microvolt = <921000>;
+		opp-hz = <0x00 0x6590fa00>;
+		opp-microvolt = <0xd0da8>;
+	};
+	opp-1800000000 {
+		status = "disabled";
 	};
 };
 
